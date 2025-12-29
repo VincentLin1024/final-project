@@ -148,14 +148,20 @@
         }
 
         .tag { 
-            font-size: 0.9rem; 
+            font-size: 0.85rem;  /* 稍微縮小字體 */
             background: #eee; 
-            padding: 8px 16px; 
+            padding: 6px 14px;  /* 稍微縮小內距 */
             border-radius: 6px; 
             color: #555; 
             display: inline-block;
             white-space: nowrap;
-            margin-bottom: 5px;
+            margin-right: 8px;  /* 右側間距 */
+            margin-bottom: 8px;  /* 下方間距 */
+        }
+        
+        /* 標籤容器 */
+        .card-content > span {
+            display: inline-block;
         }
 
         /* === 深色模式切換按鈕 === */
@@ -219,7 +225,7 @@
             max-width: 90%; 
             max-height: 90vh; 
             border-radius: 5px; 
-            box-shadow: none; 
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); 
             animation: zoomAnimation 0.3s;
             background: transparent;
             object-fit: contain;
@@ -287,6 +293,10 @@
             color: #e0e0e0;
         }
 
+        body.dark-mode .card img {
+            border-bottom-color: #2d2d2d;  /* 深色邊框，不顯眼 */
+        }
+
         body.dark-mode .card-title {
             color: #ccff00;
         }
@@ -310,22 +320,19 @@
 
         /* 深色模式下的 Lightbox */
         body.dark-mode .lightbox {
-            background-color: rgba(0, 0, 0, 0.96);  /* 更深的背景 */
+            background-color: rgba(0, 0, 0, 0.98);  /* 接近全黑 */
         }
 
         body.dark-mode .lightbox-content {
-            box-shadow: none;  /* 螢光黃光暈 */
-            background: #2d2d2d;  /* 深灰背景襯底 */
-            padding: 20px;  /* 加大內距，讓白邊變成深色襯底 */
-            border-radius: 12px;
+            box-shadow: 0 0 50px rgba(204, 255, 0, 0.5);  /* 更強的螢光黃光暈 */
+            background: #1a1a1a;  /* 更深的背景 */
+            padding: 40px;  /* 加大內距到 40px，讓襯底更明顯 */
+            border-radius: 16px;
+            border: 2px solid #2d2d2d;  /* 加深色邊框 */
         }
 
         body.dark-mode footer {
             background: #0d0d0d !important;
-        }
-
-        body.dark-mode .card img {
-            border-bottom-color: #2d2d2d;  /* 深色邊框 */
         }
 
         /* ========================================
@@ -495,18 +502,18 @@
                 <div class="card-content">
                     <div class="card-title">Logo 設計演變 (L.P.T)</div>
                     <p class="card-desc">
-                        <strong>品牌核心：</strong>將縮寫「L.P.T」與核心符號「眼睛」結合。象徵以「安靜觀察」的特質，洞察運動科學中的數據細節。<br><br>
+                        <strong>設計理念：</strong>將個人縮寫「L.P.T」與「眼睛」符號結合，象徵對細節的敏銳觀察力。眼睛作為核心元素，代表無論是數據分析或視覺設計，都始於細緻的觀察與洞察。<br><br>
                         <strong>色彩計畫：</strong>
-                        以 <strong>深海藍</strong> 象徵冷靜的邏輯架構，搭配 <strong>螢光黃</strong> 代表強烈的好奇心與數據亮點。<br><br>
-                        <strong>符號意涵：</strong>
-                        眼睛代表「數據洞察」，字母 P 的螢光黃軌跡 象徵「運動軌跡追蹤」，呼應我在運動科學領域中 以數據分析提升運動表現的研究核心。
+                        以 <strong>深海藍</strong> 象徵沉穩的理性思考，搭配 <strong>螢光黃</strong> 代表創意的熱情與關鍵亮點。兩者形成強烈對比，展現邏輯與創意的平衡。<br><br>
+                        <strong>視覺應用：</strong>
+                        此 Logo 作為個人識別系統的核心，字母 P 的螢光黃軌跡象徵探索與學習的歷程，記錄從數據研究到視覺設計的跨領域嘗試。
                     </p>
-                    <span class="tag">研究領域</span> <span class="tag">品牌識別</span> <span class="tag">個人 IP</span>
+                    <span class="tag">視覺識別</span> <span class="tag">品牌設計</span> <span class="tag">個人標誌</span>
                 </div>
             </div>
 
             <div class="card">
-                <img src="images/mountain.jpg" alt="八卦山設計" style="object-fit: contain; padding: 10px; background-color: #fafafa;">
+                <img src="images/mountain.jpg" alt="八卦山設計" style="object-fit: cover">
                 <div class="card-content">
                     <div class="card-title">在地意象：八卦山</div>
                     <p class="card-desc">
@@ -527,12 +534,12 @@
                         <strong>視覺排版：</strong>背景運用大量文字排列成拱形彩虹，創造「圖文合一」的視覺張力。<br><br>
                         <strong>設計挑戰：</strong>文字的弧形排列需要精確計算密度與角度，最終呈現出流暢的彩虹弧線與豐富的視覺層次。
                     </p>
-                    <span class="tag">英文字體</span> <span class="tag">弧形排版</span> <span class="tag">字體實驗</span>
+                    <span class="tag">字體設計</span> <span class="tag">弧形排版</span> <span class="tag">視覺實驗</span>
                 </div>
             </div>
 
             <div class="card">
-                <img src="images/bar.jpg" style="object-fit: cover">
+                <img src="images/bar.jpg" alt="色彩計畫應用" style="object-fit: cover">
                 <div class="card-content">
                     <div class="card-title">色彩計畫應用：都會夜景</div>
                     <p class="card-desc">
@@ -622,9 +629,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
