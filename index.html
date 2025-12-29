@@ -112,6 +112,16 @@
             color: var(--primary-color); 
         }
         
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: #999;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+        }
+        
         .hero p { 
             font-size: 1.2rem; 
             color: #666; 
@@ -194,6 +204,10 @@
 
         body.dark-mode .hero h1 {
             color: #e0e0e0;
+        }
+        
+        body.dark-mode .hero .subtitle {
+            color: #ccff00;
         }
 
         body.dark-mode .hero p {
@@ -313,6 +327,11 @@
                 font-size: 1.8rem;
             }
             
+            .hero .subtitle {
+                font-size: 0.95rem;
+                letter-spacing: 1.5px;
+            }
+            
             .hero p {
                 font-size: 1rem;
                 padding: 0 10px;
@@ -347,6 +366,11 @@
                 font-size: 1.6rem;
             }
             
+            .hero .subtitle {
+                font-size: 0.85rem;
+                letter-spacing: 1px;
+            }
+            
             .hero p {
                 font-size: 0.95rem;
             }
@@ -365,6 +389,10 @@
             
             .hero h1 {
                 font-size: 2.2rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1rem;
             }
         }
 
@@ -392,6 +420,7 @@
     <div class="hero">
         <img src="images/LOGO.jpg" alt="LPT Logo">
         <h1>視覺語言設計</h1>
+        <p class="subtitle">Quiet Observation</p>
         <p>
             我是林柏廷，彰化師範大學資訊管理所碩士生。<br>
             這是我的個人網站，紀錄了114-1學期的過程以及個人介紹。
