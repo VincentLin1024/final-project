@@ -84,12 +84,16 @@
         }
 
         .portfolio-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-            gap: 30px; 
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
         }
 
         .card { 
+            width: 100%;
+            max-width: 380px;  /* 新增這行 */
+            flex: 0 0 auto;    /* 新增這行 */
             background: white; 
             border-radius: 12px; 
             overflow: hidden; 
@@ -303,8 +307,12 @@
         }
         
         body.dark-mode .lightbox-content {
-            box-shadow: 0 0 20px rgba(204, 255, 0, 0.3); /* 螢光黃光暈 */
+            background: #2d2d2d;  /* 深灰背景 */
+            padding: 20px;        /* 加一點內距 */
+            border-radius: 12px;  /* 圓角 */
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.2); /* 螢光黃光暈 */
         }
+
         
         /* ========================================
            手機版響應式設計 (Responsive Design)
@@ -591,4 +599,5 @@
 </body>
 
 </html>
+
 
