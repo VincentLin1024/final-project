@@ -85,22 +85,32 @@
 
         .portfolio-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(350px, 380px));
+            grid-template-columns: repeat(3, minmax(300px, 380px)); 
             gap: 30px;
-            justify-content: center;  /* 關鍵！讓整體居中 */
-            max-width: 1400px;
+            justify-content: center;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
         .card { 
-            width: 100%;
-            max-width: 380px;  /* 新增這行 */
-            flex: 0 0 auto;    /* 新增這行 */
             background: white; 
             border-radius: 12px; 
             overflow: hidden; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-            transition: transform 0.3s ease; 
+            transition: transform 0.3s ease;
+        }
+        
+        /* 讓第 4、5 張卡片居中對齊（奧運五環式排列） */
+        .card:nth-child(4) {
+            grid-column: 1 / 2;
+            justify-self: end;
+            margin-right: 15px;
+        }
+        
+        .card:nth-child(5) {
+            grid-column: 2 / 3;
+            justify-self: start;
+            margin-left: 15px;
         }
         
         .card:hover { 
@@ -213,9 +223,9 @@
             max-height: 90vh; 
             border-radius: 5px; 
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); 
-            animation: zoomAnimation 0.3s; 
-            background: transparent; /* 新增：背景透明 */
-            object-fit: contain; /* 新增：圖片適應容器 */
+            animation: zoomAnimation 0.3s;
+            background: transparent;
+            object-fit: contain;
         }
         
         .close-btn { 
@@ -301,21 +311,21 @@
             background: #ccff00;
         }
 
+        /* 深色模式下的 Lightbox */
+        body.dark-mode .lightbox {
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+
+        body.dark-mode .lightbox-content {
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.3);
+            background: #1a1a1a;
+            padding: 10px;
+        }
+
         body.dark-mode footer {
             background: #0d0d0d !important;
         }
-        body.dark-mode .lightbox {
-            background-color: rgba(0, 0, 0, 0.95); /* 更深的背景 */
-        }
-        
-        body.dark-mode .lightbox-content {
-            background: #2d2d2d;  /* 深灰背景 */
-            padding: 20px;        /* 加一點內距 */
-            border-radius: 12px;  /* 圓角 */
-            box-shadow: 0 0 30px rgba(204, 255, 0, 0.2); /* 螢光黃光暈 */
-        }
 
-        
         /* ========================================
            手機版響應式設計 (Responsive Design)
            ======================================== */
@@ -372,6 +382,15 @@
                 grid-template-columns: 1fr !important;
                 gap: 25px;
                 padding: 0 10px;
+            }
+            
+            /* 手機版取消奧運五環式排列 */
+            .card:nth-child(4),
+            .card:nth-child(5) {
+                grid-column: auto;
+                justify-self: stretch;
+                margin-left: 0;
+                margin-right: 0;
             }
             
             .card {
@@ -435,6 +454,15 @@
             .portfolio-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
                 gap: 25px;
+            }
+            
+            /* 平板版取消奧運五環式排列 */
+            .card:nth-child(4),
+            .card:nth-child(5) {
+                grid-column: auto;
+                justify-self: stretch;
+                margin-left: 0;
+                margin-right: 0;
             }
             
             section {
@@ -503,9 +531,9 @@
                     <p class="card-desc">
                         <strong>設計理念：</strong>將 "RAINBOW" 的每個字母賦予獨立的字體與對應色（如 R 使用 Rockwell 紅色、B 使用 Brush Script 藍色），展現字體性格的多樣性。<br><br>
                         <strong>視覺排版：</strong>背景運用大量文字排列成拱形彩虹，創造「圖文合一」的視覺張力。<br><br>
-                        <strong>設計挑戰：</strong>文字的弧形排列需要精確計算密度與角度，最終呈現出流暢的彩虹弧線與豐富的視覺層次。
+                        <strong>AI 協作：</strong>利用 Gemini 協助生成並調整弧形文字的排版密度，解決傳統排版難以精準控制曲線幅度的問題。
                     </p>
-                    <span class="tag">英文文字設計</span> <span class="tag">弧形排版</span> <span class="tag">字體實驗</span>
+                    <span class="tag">英文文字設計</span> <span class="tag">AI 輔助排版</span> <span class="tag">字體實驗</span>
                 </div>
             </div>
 
@@ -599,8 +627,4 @@
     </script>
 
 </body>
-
 </html>
-
-
-
