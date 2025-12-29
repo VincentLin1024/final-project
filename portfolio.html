@@ -84,10 +84,12 @@
         }
 
         .portfolio-grid { 
-            display: flex;
-            flex-wrap: wrap;
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 380px));
             gap: 30px;
-            justify-content: center;
+            justify-content: center;  /* 關鍵！讓整體居中 */
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .card { 
@@ -599,5 +601,6 @@
 </body>
 
 </html>
+
 
 
