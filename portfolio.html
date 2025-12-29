@@ -208,6 +208,8 @@
             border-radius: 5px; 
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); 
             animation: zoomAnimation 0.3s; 
+            background: transparent; /* 新增：背景透明 */
+            object-fit: contain; /* 新增：圖片適應容器 */
         }
         
         .close-btn { 
@@ -296,7 +298,14 @@
         body.dark-mode footer {
             background: #0d0d0d !important;
         }
-
+        body.dark-mode .lightbox {
+            background-color: rgba(0, 0, 0, 0.95); /* 更深的背景 */
+        }
+        
+        body.dark-mode .lightbox-content {
+            box-shadow: 0 0 20px rgba(204, 255, 0, 0.3); /* 螢光黃光暈 */
+        }
+        
         /* ========================================
            手機版響應式設計 (Responsive Design)
            ======================================== */
@@ -582,3 +591,4 @@
 </body>
 
 </html>
+
