@@ -85,14 +85,15 @@
 
         .portfolio-grid { 
             display: grid; 
-            grid-template-columns: repeat(3, minmax(300px, 380px)); 
+            grid-template-columns: repeat(6, 1fr);  /* 6 欄系統 */
             gap: 30px;
-            justify-content: center;
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
         .card { 
+            grid-column: span 2;  /* 每個卡片佔 2 欄 */
             background: white; 
             border-radius: 12px; 
             overflow: hidden; 
@@ -100,17 +101,13 @@
             transition: transform 0.3s ease;
         }
         
-        /* 讓第 4、5 張卡片居中對齊（奧運五環式排列） */
+        /* 奧運五環式排列：讓第 4、5 張卡片居中 */
         .card:nth-child(4) {
-            grid-column: 1 / 2;
-            justify-self: end;
-            margin-right: 15px;
+            grid-column: 2 / 4;  /* 從第 2 欄開始，佔 2 欄 */
         }
         
         .card:nth-child(5) {
-            grid-column: 2 / 3;
-            justify-self: start;
-            margin-left: 15px;
+            grid-column: 4 / 6;  /* 從第 4 欄開始，佔 2 欄 */
         }
         
         .card:hover { 
@@ -313,13 +310,14 @@
 
         /* 深色模式下的 Lightbox */
         body.dark-mode .lightbox {
-            background-color: rgba(0, 0, 0, 0.95);
+            background-color: rgba(0, 0, 0, 0.96);  /* 更深的背景 */
         }
 
         body.dark-mode .lightbox-content {
-            box-shadow: 0 0 30px rgba(204, 255, 0, 0.3);
-            background: #1a1a1a;
-            padding: 10px;
+            box-shadow: 0 0 40px rgba(204, 255, 0, 0.4);  /* 螢光黃光暈 */
+            background: #2d2d2d;  /* 深灰背景襯底 */
+            padding: 20px;  /* 加大內距，讓白邊變成深色襯底 */
+            border-radius: 12px;
         }
 
         body.dark-mode footer {
@@ -384,13 +382,9 @@
                 padding: 0 10px;
             }
             
-            /* 手機版取消奧運五環式排列 */
-            .card:nth-child(4),
-            .card:nth-child(5) {
-                grid-column: auto;
-                justify-self: stretch;
-                margin-left: 0;
-                margin-right: 0;
+            /* 手機版：所有卡片正常排列 */
+            .card {
+                grid-column: auto !important;
             }
             
             .card {
@@ -456,13 +450,9 @@
                 gap: 25px;
             }
             
-            /* 平板版取消奧運五環式排列 */
-            .card:nth-child(4),
-            .card:nth-child(5) {
-                grid-column: auto;
-                justify-self: stretch;
-                margin-left: 0;
-                margin-right: 0;
+            /* 平板版：所有卡片正常排列 */
+            .card {
+                grid-column: auto !important;
             }
             
             section {
