@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聯絡我 | 林柏廷 Design</title>
+    <style>
+        /* CSS 與其他頁面保持一致 */
+        :root { --primary-color: #2c3e50; --accent-color: #3498db; --bg-color: #f8f9fa; --text-color: #333; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-color); 
+            line-height: 1.6; 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+        }
+        
+        /* === 導覽列 === */
+        nav { 
+            background: white; 
+            padding: 1rem 2rem; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100;
+        }
+
+        nav .logo a {
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: sans-serif;
+            text-decoration: none;
+            color: #2c3e50;
+        }
+
+        nav a.menu-item {
+            text-decoration: none;
+            color: #333;
+            margin-left: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            font-family: sans-serif;
+            transition: color 0.3s;
+        }
+
+        nav a.menu-item:hover {
+            color: #3498db;
+        }
+
+        nav a.active { 
+            color: #3498db; 
+            font-weight: bold; 
+        }
+
+        /* === 聯絡頁面專屬樣式 === */
+        .contact-container {
+            flex: 1;
+            max-width: 800px;
+            margin: 60px auto;
+            background: white;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .contact-title { 
+            font-size: 2rem; 
+            margin-bottom: 20px; 
+            color: var(--primary-color); 
+        }
+        
+        .contact-desc { 
+            color: #666; 
+            margin-bottom: 40px; 
+        }
+
+        .contact-methods { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+            align-items: center; 
+        }
+
+        .email-section {
+            margin-bottom: 30px;
+            font-size: 1.25rem;
+            font-family: monospace, sans-serif;
+        }
+
+        .email-label {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-right: 10px;
+        }
+
+        .email-link {
+            color: #333;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 300px;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            background: #f9fcff;
+            transform: translateY(-2px);
+        }
+
+        /* === 深色模式切換按鈕 === */
+        .theme-toggle {
+            background: none;
+            border: 2px solid #333;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 25px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            background: #f0f0f0;
+            transform: rotate(20deg);
+        }
+
+        /* === Footer === */
+        footer { 
+            text-align: center; 
+            padding: 35px 20px; 
+            background: var(--primary-color); 
+            color: white; 
+            margin-top: auto;
+        }
+
+        .footer-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+        }
+
+        .footer-copyright {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            font-family: sans-serif;
+        }
+
+        /* === 深色模式樣式 === */
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode nav {
+            background: #2d2d2d;
+            box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+        }
+
+        body.dark-mode nav .logo a {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode nav a.menu-item {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode nav a.active { 
+            color: #ccff00;
+            font-weight: bold; 
+        }
+
+        body.dark-mode nav a.menu-item:hover {
+            color: #3498db;
+        }
+
+        body.dark-mode .theme-toggle {
+            border-color: #e0e0e0;
+        }
+
+        body.dark-mode .theme-toggle:hover {
+            background: #3d3d3d;
+        }
+
+        body.dark-mode .contact-container {
+            background: #2d2d2d;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .contact-title {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .contact-desc {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .email-label {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .email-link {
+            color: #ccff00 !important;
+        }
+
+        body.dark-mode .contact-btn {
+            background: #2d2d2d;
+            border-color: #4d4d4d;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .contact-btn:hover {
+            background: #3d3d3d;
+            border-color: #ccff00;
+        }
+
+        body.dark-mode footer {
+            background: #0d0d0d !important;
+        }
+
+        /* ========================================
+           手機版響應式設計 (Responsive Design)
+           ======================================== */
+
+        /* === 手機版 (螢幕寬度 ≤ 768px) === */
+        @media screen and (max-width: 768px) {
+            
+            /* 導覽列改成垂直堆疊 */
+            nav {
+                flex-direction: column;
+                padding: 1rem;
+                gap: 15px;
+            }
+            
+            nav .logo {
+                text-align: center;
+            }
+            
+            nav .logo a {
+                font-size: 1.3rem;
+            }
+            
+            nav > div:last-child {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+            
+            nav a.menu-item {
+                margin-left: 0;
+                font-size: 1rem;
+                padding: 8px 12px;
+            }
+            
+            .theme-toggle {
+                margin-left: 0;
+                width: 36px;
+                height: 36px;
+            }
+            
+            /* 聯絡頁面 */
+            .contact-container {
+                padding: 30px 20px;
+                margin: 30px 10px;
+            }
+            
+            .contact-title {
+                font-size: 1.6rem;
+            }
+            
+            .contact-desc {
+                font-size: 0.95rem;
+                padding: 0 10px;
+            }
+            
+            /* Email 區塊 */
+            .email-section {
+                font-size: 1rem;
+            }
+            
+            .contact-btn {
+                max-width: 100%;
+                width: 100%;
+                padding: 14px;
+                font-size: 1rem;
+            }
+            
+            /* Footer */
+            footer {
+                padding: 30px 20px;
+            }
+            
+            .footer-title {
+                font-size: 1rem;
+            }
+            
+            .footer-copyright {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* === 超小螢幕 (≤ 375px，如 iPhone SE) === */
+        @media screen and (max-width: 375px) {
+            nav a.menu-item {
+                font-size: 0.95rem;
+                padding: 6px 10px;
+            }
+        }
+
+        /* === 平板 (768px - 1024px) === */
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
+            .contact-container {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><a href="index.html">Lin Po-Ting Design</a></div>
+        <div>
+            <a href="index.html" class="menu-item">首頁</a>
+            <a href="portfolio.html" class="menu-item">作品集</a>
+            <a href="about.html" class="menu-item">關於我</a>
+            <a href="contact.html" class="menu-item active">聯絡資訊</a>
+            <button id="themeToggle" class="theme-toggle">🌙</button>
+        </div>
+    </nav>
+
+    <div class="contact-container">
+        <h1 class="contact-title">Let's Connect</h1>
+        <p class="contact-desc">
+            若您對運動科學、數據分析有相關研究興趣，或是對於本作品集有任何指教，<br>
+            歡迎透過以下方式與我聯繫交流。
+        </p>
+
+        <div class="contact-methods">
+            <div class="email-section">
+                <span class="email-label">📧 Email :</span>
+                <a href="mailto:31003vincent@gmail.com" class="email-link">
+                    31003vincent@gmail.com
+                </a>
+            </div>
+
+            <a href="https://www.instagram.com/10_rainbow_24" class="contact-btn">
+                📷 Instagram 
+            </a>
+
+            <a href="https://www.facebook.com/vincent.lin.150061" class="contact-btn">
+                📷 Facebook
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-title">Lin Po-Ting Design</p>
+        <p class="footer-copyright">© 2025 Lin Po-Ting. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // 深色模式切換功能
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+
+</body>
+</html>
