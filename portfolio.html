@@ -219,7 +219,7 @@
             max-width: 90%; 
             max-height: 90vh; 
             border-radius: 5px; 
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); 
+            box-shadow: none; 
             animation: zoomAnimation 0.3s;
             background: transparent;
             object-fit: contain;
@@ -322,6 +322,10 @@
 
         body.dark-mode footer {
             background: #0d0d0d !important;
+        }
+
+        body.dark-mode .card img {
+            border-bottom-color: #2d2d2d;  /* 深色邊框 */
         }
 
         /* ========================================
@@ -618,4 +622,5 @@
 
 </body>
 </html>
+
 
