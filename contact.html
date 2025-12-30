@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聯絡我 | 林柏廷 Design</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 全站字體放大 */
+        html { font-size: 120%; }
+        
+        /* CSS 與其他頁面保持一致 */
+        :root { --primary-color: #2c3e50; --accent-color: #3498db; --bg-color: #f8f9fa; --text-color: #333; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-color); 
+            line-height: 1.6; 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+        }
+        
+        /* === 導覽列 === */
+        nav { 
+            background: white; 
+            padding: 1rem 2rem; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100;
+        }
+
+        nav .logo a {
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: sans-serif;
+            text-decoration: none;
+            color: #2c3e50;
+        }
+
+        nav a.menu-item {
+            text-decoration: none;
+            color: #333;
+            margin-left: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            font-family: sans-serif;
+            transition: color 0.3s;
+        }
+
+        nav a.menu-item:hover {
+            color: #3498db;
+        }
+
+        nav a.active { 
+            color: #3498db; 
+            font-weight: bold; 
+        }
+
+        /* === 聯絡頁面專屬樣式 === */
+        .contact-container {
+            flex: 1;
+            max-width: 95%;
+            width: 100%;
+            margin: 40px auto;
+            background: #fafafa;
+            padding: 60px 80px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .contact-title { 
+            font-size: 2rem; 
+            margin-bottom: 20px; 
+            color: var(--primary-color);
+            text-align: center;
+        }
+        
+        .contact-desc { 
+            color: #666; 
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        /* === 左右分欄布局 === */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .form-column {
+            text-align: left;
+        }
+
+        /* === 左側表單框框 === */
+        .form-box {
+            background: #f0f0f0;
+            padding: 35px 30px;
+            border-radius: 16px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .form-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .info-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* === 右側資訊框框 === */
+        .contact-info-box {
+            background: #f0f0f0;
+            padding: 35px 30px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .info-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        /* === Email 區塊 === */
+        .email-section {
+            text-align: center;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .email-label {
+            display: block;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .email-label i {
+            font-size: 1.2rem;
+            margin-right: 8px;
+        }
+
+        .email-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            word-break: break-all;
+            font-size: 1rem;
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
+        }
+
+        /* === 聯絡表單樣式 === */
+        .contact-form {
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px 30px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        /* === 右側社群按鈕 === */
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 20px 20px;
+            border: none;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+        }
+
+        .social-btn.instagram {
+            background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .social-btn.instagram:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(188, 24, 136, 0.4);
+        }
+
+        .social-btn.facebook {
+            background: #1877f2;
+        }
+
+        .social-btn.facebook:hover {
+            background: #0d6efd;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(24, 119, 242, 0.4);
+        }
+
+        .social-btn .icon {
+            font-size: 1.8rem;
+        }
+
+        /* === 深色模式切換按鈕 === */
+        .theme-toggle {
+            background: none;
+            border: 2px solid #333;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 25px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            background: #f0f0f0;
+            transform: rotate(20deg);
+        }
+
+        /* === Footer === */
+        footer { 
+            text-align: center; 
+            padding: 35px 20px; 
+            background: var(--primary-color); 
+            color: white; 
+            margin-top: auto;
+        }
+
+        .footer-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+        }
+
+        .footer-copyright {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            font-family: sans-serif;
+        }
+
+        /* === 深色模式樣式 === */
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode nav {
+            background: #2d2d2d;
+            box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+        }
+
+        body.dark-mode nav .logo a {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode nav a.menu-item {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode nav a.active { 
+            color: #ccff00;
+        }
+
+        body.dark-mode nav a.menu-item:hover {
+            color: #3498db;
+        }
+
+        body.dark-mode .theme-toggle {
+            border-color: #e0e0e0;
+        }
+
+        body.dark-mode .theme-toggle:hover {
+            background: #3d3d3d;
+        }
+
+        body.dark-mode .contact-container {
+            background: #252525;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .contact-title {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .contact-desc {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .form-box {
+            background: #1e1e1e;
+            border-color: #4d4d4d;
+        }
+
+        body.dark-mode .form-title {
+            color: #ccff00;
+        }
+
+        body.dark-mode .form-group label {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group textarea {
+            background: #1a1a1a;
+            border-color: #4d4d4d;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .form-group input:focus,
+        body.dark-mode .form-group textarea:focus {
+            border-color: #ccff00;
+            box-shadow: 0 0 0 3px rgba(204, 255, 0, 0.1);
+        }
+
+        body.dark-mode .submit-btn {
+            background: #ccff00;
+            color: #1a1a1a;
+        }
+
+        body.dark-mode .submit-btn:hover {
+            background: #d4ff33;
+        }
+
+        body.dark-mode .contact-info-box {
+            background: #1e1e1e;
+            border-color: #4d4d4d;
+        }
+
+        body.dark-mode .info-title {
+            color: #ccff00;
+        }
+
+        body.dark-mode .email-section {
+            border-bottom-color: #3d3d3d;
+        }
+
+        body.dark-mode .email-label {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .email-link {
+            color: #ccff00;
+        }
+
+        body.dark-mode .social-btn.instagram {
+            background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        body.dark-mode .social-btn.facebook {
+            background: #1877f2;
+        }
+
+        body.dark-mode footer {
+            background: #0d0d0d;
+        }
+
+        /* === 響應式設計 === */
+        
+        /* 手機版 (螢幕寬度 ≤ 768px) */
+        @media screen and (max-width: 768px) {
+            
+            /* 導覽列改成垂直堆疊 */
+            nav {
+                flex-direction: column;
+                padding: 1rem;
+                gap: 15px;
+            }
+            
+            nav .logo {
+                text-align: center;
+            }
+            
+            nav .logo a {
+                font-size: 1.3rem;
+            }
+            
+            nav > div:last-child {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+            
+            nav a.menu-item {
+                margin-left: 0;
+                font-size: 1rem;
+                padding: 8px 12px;
+            }
+            
+            .theme-toggle {
+                margin-left: 0;
+                width: 36px;
+                height: 36px;
+            }
+            
+            /* 聯絡頁面 */
+            .contact-container {
+                padding: 30px 20px;
+                margin: 30px 10px;
+            }
+            
+            .contact-title {
+                font-size: 1.6rem;
+            }
+            
+            .contact-desc {
+                font-size: 0.95rem;
+                padding: 0 10px;
+                margin-bottom: 30px;
+            }
+            
+            /* 手機版改成上下排列 */
+            .contact-content {
+                grid-template-columns: 1fr !important;
+                gap: 40px;
+            }
+
+            .form-box {
+                padding: 25px 20px;
+            }
+
+            .form-title {
+                font-size: 1.2rem;
+            }
+            
+            /* 表單 */
+            .form-group input,
+            .form-group textarea {
+                font-size: 0.95rem;
+                padding: 10px 14px;
+            }
+
+            .submit-btn {
+                font-size: 1rem;
+            }
+
+            /* 右側框框 */
+            .contact-info-box {
+                padding: 25px 20px;
+            }
+
+            .info-title {
+                font-size: 1.2rem;
+            }
+
+            /* 社群按鈕 */
+            .social-btn {
+                padding: 18px 20px;
+                font-size: 1.1rem;
+            }
+
+            .social-btn .icon {
+                font-size: 1.6rem;
+            }
+            
+            /* Footer */
+            footer {
+                padding: 30px 20px;
+            }
+            
+            .footer-title {
+                font-size: 1rem;
+            }
+            
+            .footer-copyright {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* 超小螢幕 (≤ 375px，如 iPhone SE) */
+        @media screen and (max-width: 375px) {
+            nav a.menu-item {
+                font-size: 0.95rem;
+                padding: 6px 10px;
+            }
+        }
+
+        /* 平板 (768px - 1024px) */
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
+            .contact-container {
+                padding: 50px 40px;
+            }
+
+            .contact-content {
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><a href="index.html">Lin Po-Ting</a></div>
+        <div>
+            <a href="index.html" class="menu-item">首頁</a>
+            <a href="portfolio.html" class="menu-item">作品集</a>
+            <a href="about.html" class="menu-item">關於我</a>
+            <a href="contact.html" class="menu-item active">聯絡資訊</a>
+            <button id="themeToggle" class="theme-toggle">🌙</button>
+        </div>
+    </nav>
+
+    <div class="contact-container">
+        <h1 class="contact-title">聯絡資訊</h1>
+        <p class="contact-desc">
+            若您對設計有任何想法與交流，或對本作品集有任何建議與指教，<br>
+            歡迎透過以下方式與我聯繫。
+        </p>
+
+        <div class="contact-content">
+            <!-- 左側：表單 -->
+            <div class="form-column">
+                <div class="form-box">
+                    <h3 class="form-title">留言給我</h3>
+                    
+                    <form action="https://formspree.io/f/xregdbjo" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">姓名 / Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">主旨 / Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="想討論的主題">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">訊息 / Message</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="寫下你的訊息..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">送出訊息 Send Message</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- 右側：聯絡資訊 -->
+            <div class="info-column">
+                <div class="contact-info-box">
+                    <h3 class="info-title">其他聯絡方式</h3>
+                    
+                    <!-- Email -->
+                    <div class="email-section">
+                        <div class="email-label"><i class="fas fa-envelope"></i> Email</div>
+                        <a href="mailto:31003vincent@gmail.com" class="email-link">31003vincent@gmail.com</a>
+                    </div>
+
+                    <!-- 社群連結 -->
+                    <a href="https://www.instagram.com/10_rainbow_24" class="social-btn instagram">
+                        <span class="icon"><i class="fab fa-instagram"></i></span>
+                        <span>Instagram</span>
+                    </a>
+
+                    <a href="https://www.facebook.com/vincent.lin.150061" class="social-btn facebook">
+                        <span class="icon"><i class="fab fa-facebook"></i></span>
+                        <span>Facebook</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-title">Lin Po-Ting Design</p>
+        <p class="footer-copyright">© 2025 Lin Po-Ting. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // 深色模式切換功能
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+
+</body>
+</html>

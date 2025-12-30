@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁 | 林柏廷</title>
+    <style>
+        html {
+            font-size: 120%;  /* 全站字體放大 20% */
+        }
+        
+        :root { 
+            --primary-color: #2c3e50; 
+            --accent-color: #3498db; 
+            --bg-color: #f8f9fa; 
+            --text-color: #333; 
+        }
+        
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        body { 
+            font-family: "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-color); 
+            line-height: 1.6;
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+        }
+        
+        /* === 導覽列 === */
+        nav { 
+            background: white; 
+            padding: 1rem 2rem; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100;
+        }
+
+        nav .logo a {
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: sans-serif;
+            text-decoration: none;
+            color: #2c3e50;
+        }
+
+        nav a.menu-item {
+            text-decoration: none;
+            color: #333;
+            margin-left: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            font-family: sans-serif;
+            transition: color 0.3s;
+        }
+
+        nav a.menu-item:hover {
+            color: #3498db;
+        }
+
+        nav a.active { 
+            color: #3498db; 
+            font-weight: bold; 
+        }
+
+        /* === 深色模式切換按鈕 === */
+        .theme-toggle {
+            background: none;
+            border: 2px solid #333;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 25px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            background: #f0f0f0;
+            transform: rotate(20deg);
+        }
+
+        /* === 首頁 Hero Section === */
+        .hero { 
+            flex: 1; 
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            padding: 80px 100px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+        
+        .hero-left {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-left img { 
+            width: 100%;
+            max-width: 700px;
+        }
+        
+        .hero-right {
+            text-align: left;
+        }
+        
+        .hero-right h1 { 
+            font-size: 3.5rem; 
+            margin-bottom: 25px; 
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .hero-right .subtitle {
+            font-size: 1.4rem;
+            color: #999;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 35px;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+        }
+        
+        .hero-right .intro { 
+            font-size: 1.3rem; 
+            color: #666; 
+            line-height: 2;
+            margin-bottom: 45px; 
+        }
+        
+        .btn { 
+            display: inline-block; 
+            padding: 16px 40px; 
+            background-color: var(--primary-color); 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s; 
+        }
+        
+        .btn:hover { 
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        /* === Footer === */
+        footer { 
+            text-align: center; 
+            padding: 35px 20px; 
+            background: var(--primary-color); 
+            color: white; 
+            margin-top: auto; 
+        }
+
+        .footer-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+        }
+
+        .footer-copyright {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            font-family: sans-serif;
+        }
+
+        /* === 深色模式樣式 === */
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode nav {
+            background: #2d2d2d;
+            box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+        }
+
+        body.dark-mode nav .logo a {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode nav a.menu-item {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode nav a.active { 
+            color: #ccff00;
+            font-weight: bold; 
+        }
+
+        body.dark-mode nav a.menu-item:hover {
+            color: #3498db;
+        }
+
+        body.dark-mode .theme-toggle {
+            border-color: #e0e0e0;
+        }
+
+        body.dark-mode .theme-toggle:hover {
+            background: #3d3d3d;
+        }
+
+        body.dark-mode .hero-right h1 {
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode .hero-right .subtitle {
+            color: #ccff00;
+        }
+
+        body.dark-mode .hero-right .intro {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .btn {
+            background-color: #3d3d3d;
+            color: #e0e0e0;
+            border: 2px solid #ccff00;
+        }
+
+        body.dark-mode .btn:hover {
+            background-color: #ccff00;
+            color: #1a1a1a;
+        }
+
+        body.dark-mode footer {
+            background: #0d0d0d !important;
+        }
+
+        /* ========================================
+           手機版響應式設計 (Responsive Design)
+           ======================================== */
+
+        /* === 手機版 (螢幕寬度 ≤ 768px) === */
+        @media screen and (max-width: 768px) {
+            
+            /* 導覽列垂直排列 */
+            nav {
+                flex-direction: column;
+                padding: 1rem;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            /* Logo */
+            nav .logo {
+                width: 100%;
+            }
+            
+            nav .logo a {
+                font-size: 1.4rem;
+                display: block;
+            }
+            
+            /* 分隔線 */
+            nav::after {
+                content: '';
+                width: 80%;
+                height: 1px;
+                background: rgba(0,0,0,0.1);
+                order: 1;
+            }
+            
+            body.dark-mode nav::after {
+                background: rgba(255,255,255,0.1);
+            }
+            
+            /* 選單容器 */
+            nav > div:last-child {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+                order: 2;
+            }
+            
+            /* 選單按鈕 */
+            nav a.menu-item {
+                margin: 0;
+                padding: 10px 15px;
+                font-size: 0.95rem;
+                text-align: center;
+                border: 1px solid rgba(0,0,0,0.1);
+                border-radius: 8px;
+                transition: all 0.3s;
+            }
+            
+            nav a.menu-item.active {
+                border-color: #3498db;
+                background: rgba(52, 152, 219, 0.05);
+            }
+            
+            /* 深色模式按鈕 */
+            .theme-toggle {
+                margin: 0;
+                grid-column: 1 / -1;
+                width: 40px;
+                height: 40px;
+                justify-self: center;
+            }
+            
+            /* 深色模式下 */
+            body.dark-mode nav a.menu-item {
+                border-color: rgba(255,255,255,0.2);
+            }
+            
+            body.dark-mode nav a.menu-item.active {
+                border-color: #ccff00;
+                background: rgba(204, 255, 0, 0.1);
+            }
+            
+            /* 首頁 - 手機版改成上下堆疊 */
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 30px 20px;
+            }
+            
+            .hero-left {
+                justify-content: center;
+            }
+            
+            .hero-left img {
+                max-width: 280px;
+            }
+            
+            .hero-right {
+                text-align: center;
+            }
+            
+            .hero-right h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-right .subtitle {
+                font-size: 0.95rem;
+                letter-spacing: 1.5px;
+            }
+            
+            .hero-right .intro {
+                font-size: 1rem;
+            }
+                padding: 0 10px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            /* Footer */
+            footer {
+                padding: 30px 20px;
+            }
+            
+            .footer-title {
+                font-size: 1rem;
+            }
+            
+            .footer-copyright {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* === 超小螢幕 (≤ 375px，如 iPhone SE) === */
+        @media screen and (max-width: 375px) {
+            .hero img {
+                width: 240px !important;
+            }
+            
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 0.85rem;
+                letter-spacing: 1px;
+            }
+            
+            .hero p {
+                font-size: 0.95rem;
+            }
+            
+            nav a.menu-item {
+                font-size: 0.9rem;
+                padding: 8px 12px;
+            }
+        }
+
+        /* === 平板 (768px - 1024px) === */
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
+            .hero img {
+                width: 380px !important;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        /* === 大螢幕優化 (≥ 1400px) === */
+        @media screen and (min-width: 1400px) {
+            .hero img {
+                width: 500px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><a href="index.html">Lin Po-Ting</a></div>
+        <div>
+            <a href="index.html" class="menu-item active">首頁</a>
+            <a href="portfolio.html" class="menu-item">作品集</a>
+            <a href="about.html" class="menu-item">關於我</a>
+            <a href="contact.html" class="menu-item">聯絡資訊</a>
+            <button id="themeToggle" class="theme-toggle">🌙</button>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-left">
+            <img src="images/LOGO.jpg" alt="LPT Logo">
+        </div>
+        
+        <div class="hero-right">
+            <h1>視覺語言設計</h1>
+            <p class="subtitle">Quiet Observation</p>
+            <p class="intro">
+                我是林柏廷，彰化師範大學資訊管理所碩士生。<br>
+                這是我的個人網站，紀錄了114-1學期的過程以及個人介紹。
+            </p>
+            <a href="portfolio.html" class="btn">瀏覽作品集</a>
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-title">Lin Po-Ting Design</p>
+        <p class="footer-copyright">© 2025 Lin Po-Ting. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // 深色模式切換功能
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // 檢查是否有儲存的主題偏好
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+
+        // 點擊切換
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+
+</body>
+</html>
